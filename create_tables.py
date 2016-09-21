@@ -7,6 +7,9 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+if os.path.isfile('sqlalchemy_example.db'):
+  os.remove('sqlalchemy_example.db')
+
 class Person(Base):
   __tablename__ = 'person'
   # Here we define columns for the table person

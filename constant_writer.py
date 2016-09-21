@@ -25,4 +25,4 @@ def read():
 
 while(True):
   write()
-  # time.sleep(1)
+  time.sleep(1)

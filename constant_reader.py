@@ -17,11 +17,15 @@ def write():
   cauldron_server.add_person.delay()
 
 def read():
-  persons = cauldron_server.all_person()
-  print('%d persons' % len(persons))
-  addresses = cauldron_server.all_address()
-  print('%d addresses' % len(addresses))
+  persons = cauldron_server.all_person.delay()
+  print('%d persons' % len(persons.get()))
+  addresses = cauldron_server.all_address.delay()
+  print('%d addresses' % len(addresses.get()))
+
+def read_nondb():
+  nondb = cauldron_server.non_db_task.delay()
+  print(nondb.get())
 
 while(True):
   read()
-  time.sleep(1)
+  # time.sleep(1)
